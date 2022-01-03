@@ -12,7 +12,8 @@
      
     <div class="sidenav">
          <a href="venues.jsp">Add venues</a><br>
-         <a href="Services.jsp">Add services</a>
+         <a href="Services.jsp">Add services</a><br>
+         <a href="viewUser.jsp">Add users</a>
         
     </div>
      

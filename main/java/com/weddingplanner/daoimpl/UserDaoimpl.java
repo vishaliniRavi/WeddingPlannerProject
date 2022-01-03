@@ -46,7 +46,7 @@ public class UserDaoimpl implements UserDao{
 			ResultSet rs=stmt.executeQuery(validateQuery);
 			if(rs.next())
 			{
-				user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,password);
+				user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,password,rs.getInt(6));
 			}
 			else {
 				System.out.println("Not a valid user");
@@ -67,7 +67,7 @@ public class UserDaoimpl implements UserDao{
 			Statement stmt =con.createStatement();
 			ResultSet rs=stmt.executeQuery(validateAdminQuery);
 			if(rs.next()) {
-				user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,password);
+				user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,password,rs.getInt(8));
 			}
 //			else {
 //				System.out.println("not a valid user");
@@ -110,7 +110,7 @@ public class UserDaoimpl implements UserDao{
 				ResultSet rs=stmt.executeQuery(validateUpdateQuery);
 				if(rs.next())
 				{
-					user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,rs.getString(7));
+					user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,rs.getString(7),rs.getInt(8));
 				}
 				else {
 					System.out.println("Not a valid user");
@@ -131,7 +131,7 @@ public class UserDaoimpl implements UserDao{
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(showQuery);
 			while(rs.next()) {
-				User user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),rs.getString(6),rs.getString(7));
+				User user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8));
 				userList.add(user);
 				
 			}

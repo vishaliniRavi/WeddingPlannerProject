@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 		String emailid = request.getParameter("email");
 		String password = request.getParameter("password");
 		System.out.println("hi"+username+ phoneno+ city+emailid+ password);
-		User user = new User(username, phoneno, city, emailid, password);
+		User user = new User(username, phoneno, city, emailid, password,0);
 		UserDaoimpl userdao = new UserDaoimpl();
 		userdao.insertUser(user);
 		RequestDispatcher rd=request.getRequestDispatcher("login.jsp");
