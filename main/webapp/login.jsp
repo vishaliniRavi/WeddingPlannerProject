@@ -4,18 +4,19 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="bd">
     <div class="login-box">
         <h1>Login</h1>
-        <form>
+        <form action="login" method="post">
            <label>Email</label>
-           <input type="email" id="email" placeholder="" required>
+           <input type="email" name="email" placeholder="" required>
            <label>Password</label>
-           <input type="password" id="password" placeholder="" required>
-           <input type="button" value="Sumbit">
+           <input type="password" name="password" placeholder="" required>
+           <input type="submit" value="Sumbit">
         </form>
     </div>
-        <p class="para">Not have an account?<a href="signup.html">Sign up here</a></p>
+        <p class="para">Not have an account?<a href="register.jsp">Sign up here</a></p>
 </html>

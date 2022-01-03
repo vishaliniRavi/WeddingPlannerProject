@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebApp_ID" version="2.4" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">	<display-name>WeddingPlannerProject</display-name>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://jAVA.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<servlet>
 		<description>
 		</description>
-		<display-name>Login</display-name>
-		<servlet-name>Login</servlet-name>
-		<servlet-class>com.weddingplanner.servlet.Login</servlet-class>
+		<display-name>AdminServlet</display-name>
+		<servlet-name>AdminServlet</servlet-name>
+		<servlet-class>com.weddingplanner.controller.AdminServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
-		<display-name>Register</display-name>
-		<servlet-name>Register</servlet-name>
-		<servlet-class>controller.Register</servlet-class>
+		<display-name>ServiceServlet</display-name>
+		<servlet-name>ServiceServlet</servlet-name>
+		<servlet-class>com.weddingplanner.controller.ServiceServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Login</servlet-name>
-		<url-pattern>/Login</url-pattern>
+		<servlet-name>AdminServlet</servlet-name>
+		<url-pattern>/AdminServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>Register</servlet-name>
-		<url-pattern>/Register</url-pattern>
+		<servlet-name>ServiceServlet</servlet-name>
+		<url-pattern>/ServiceServlet</url-pattern>
 	</servlet-mapping>
+	
 	
 </web-app>

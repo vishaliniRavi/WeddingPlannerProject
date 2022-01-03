@@ -1,4 +1,4 @@
-package com.weddingplanner.dao;
+package com.weddingplanner.daoimpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.weddingplanner.interfaces.BookingServiceDaoInterface;
-import com.weddingplannr.model.BookingServices;
-import com.weddingplannr.model.BookingVenues;
+import com.weddingplanner.dao.BookingServiceDao;
+import com.weddingplanner.module.BookingServices;
+import com.weddingplanner.module.BookingVenues;
+import com.weddingplanner.util.ConnectionUtil;
 
-public class BookingServicesDao implements BookingServiceDaoInterface{
+public class BookingServicesDaoimpl implements BookingServiceDao{
 	public void bookService(BookingServices bookService) {
 		String insert = "insert into booking_services (user_id,service_id,service_name,event_date,service_package)values(?,?,?,?,?) ";
 

@@ -1,4 +1,4 @@
-package com.weddingplanner.dao;
+package com.weddingplanner.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

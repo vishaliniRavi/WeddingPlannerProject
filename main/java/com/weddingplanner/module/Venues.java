@@ -1,4 +1,4 @@
-package com.weddingplannr.model;
+package com.weddingplanner.module;
 
 import java.util.Objects;
 
@@ -11,6 +11,7 @@ public class Venues {
 	private long contactNumber;
 	private double venuePackage;
 	private String availability;
+	private String venueImages;
 	public String getVenueName() {
 		return venueName;
 	}
@@ -59,8 +60,14 @@ public class Venues {
 	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
+	public String getVenueImages() {
+		return venueImages;
+	}
+	public void setVenueImages(String venueImages) {
+		this.venueImages = venueImages;
+	}
 	public Venues(String venueName, String venueArea, String venueCity, String venueType, String venueVendorName,
-			long contactNumber, double venuePackage, String availability) {
+			long contactNumber, double venuePackage, String availability, String venueImages) {
 		super();
 		this.venueName = venueName;
 		this.venueArea = venueArea;
@@ -70,15 +77,23 @@ public class Venues {
 		this.contactNumber = contactNumber;
 		this.venuePackage = venuePackage;
 		this.availability = availability;
+		this.venueImages = venueImages;
 	}
 	public Venues() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	@Override
+	public String toString() {
+		return "Venues [venueName=" + venueName + ", venueArea=" + venueArea + ", venueCity=" + venueCity
+				+ ", venueType=" + venueType + ", venueVendorName=" + venueVendorName + ", contactNumber="
+				+ contactNumber + ", venuePackage=" + venuePackage + ", availability=" + availability + ", venueImages="
+				+ venueImages + "]";
+	}
+	@Override
 	public int hashCode() {
-		return Objects.hash(availability, contactNumber, venueArea, venueCity, venueName, venuePackage, venueType,
-				venueVendorName);
+		return Objects.hash(availability, contactNumber, venueArea, venueCity, venueImages, venueName, venuePackage,
+				venueType, venueVendorName);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -91,19 +106,10 @@ public class Venues {
 		Venues other = (Venues) obj;
 		return Objects.equals(availability, other.availability) && contactNumber == other.contactNumber
 				&& Objects.equals(venueArea, other.venueArea) && Objects.equals(venueCity, other.venueCity)
-				&& Objects.equals(venueName, other.venueName)
+				&& Objects.equals(venueImages, other.venueImages) && Objects.equals(venueName, other.venueName)
 				&& Double.doubleToLongBits(venuePackage) == Double.doubleToLongBits(other.venuePackage)
 				&& Objects.equals(venueType, other.venueType) && Objects.equals(venueVendorName, other.venueVendorName);
 	}
-	@Override
-	public String toString() {
-		return "venueName:" + venueName + "\nvenueArea:" + venueArea + "\nvenueCity:" + venueCity
-				+ "\nvenueType:" + venueType + "\nvenueVendorName:" + venueVendorName + "\ncontactNumber:"
-				+ contactNumber + "\nvenuePackage:" + venuePackage + "\navailability:" + availability + "\n";
-	}
-		
-	
-	
 	
 	
 	

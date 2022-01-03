@@ -1,4 +1,4 @@
-package com.weddingplannr.model;
+package com.weddingplanner.module;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package com.weddingplanner.dao;
+package com.weddingplanner.daoimpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.weddingplanner.interfaces.BookingVenueDaoInterface;
-import com.weddingplannr.model.BookingVenues;
-import com.weddingplannr.model.Venues;
+import com.weddingplanner.dao.BookingVenueDao;
+import com.weddingplanner.module.BookingVenues;
+import com.weddingplanner.module.Venues;
+import com.weddingplanner.util.ConnectionUtil;
 
-public class BookingVenuesDao implements BookingVenueDaoInterface{
+public class BookingVenuesDaoimpl implements BookingVenueDao{
 	
 	public void bookVenue(BookingVenues bookVenues) {
 //		String bookQuery="insert into booking_venues (user_id,venue_id,venue_name,no_of_guest,function_time,event_date,venue_package) values(?,?,?,?,?,?,?)";

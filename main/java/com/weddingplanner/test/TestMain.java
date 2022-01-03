@@ -6,18 +6,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import com.weddingplanner.dao.BookingServicesDao;
-import com.weddingplanner.dao.BookingVenuesDao;
-import com.weddingplanner.dao.RatingsDao;
-import com.weddingplanner.dao.ServicesDao;
-import com.weddingplanner.dao.UserDao;
-import com.weddingplanner.dao.VenuesDao;
-import com.weddingplannr.model.BookingServices;
-import com.weddingplannr.model.BookingVenues;
-import com.weddingplannr.model.Ratings;
-import com.weddingplannr.model.Services;
-import com.weddingplannr.model.User;
-import com.weddingplannr.model.Venues;
+import com.weddingplanner.daoimpl.BookingServicesDaoimpl;
+import com.weddingplanner.daoimpl.BookingVenuesDaoimpl;
+import com.weddingplanner.daoimpl.RatingsDaoimpl;
+import com.weddingplanner.daoimpl.ServicesDaoimpl;
+import com.weddingplanner.daoimpl.UserDaoimpl;
+import com.weddingplanner.daoimpl.VenuesDaoimpl;
+import com.weddingplanner.module.BookingServices;
+import com.weddingplanner.module.BookingVenues;
+import com.weddingplanner.module.Ratings;
+import com.weddingplanner.module.Services;
+import com.weddingplanner.module.User;
+import com.weddingplanner.module.Venues;
 
 public class TestMain {
 	public static void main(String[] args) {
@@ -26,10 +26,10 @@ public class TestMain {
 		System.out.println("\n1.Register\n2.Login\nEnter your choice");
 		int choice = Integer.parseInt(sc.nextLine());
 		int flag;
-		UserDao userDao = null;
+		UserDaoimpl userDao = null;
 		switch (choice) {
 		case 1:
-			userDao = new UserDao();
+			userDao = new UserDaoimpl();
 			String emailId = null;
 			String userName = null;
 			String password = null;
@@ -108,7 +108,7 @@ public class TestMain {
 			break;
 //login		
 		case 2:
-			userDao = new UserDao();
+			userDao = new UserDaoimpl();
 			do {
 				System.out.println("Enter email id");
 				emailId = sc.nextLine();
@@ -139,14 +139,14 @@ public class TestMain {
 					int option = Integer.parseInt(sc.nextLine());
 					switch (option) {
 					case 1: // view customer
-						UserDao userdao = new UserDao();
+						UserDaoimpl userdao = new UserDaoimpl();
 						List<User> userList = userdao.viewUser();
 						for (int i = 0; i < userList.size(); i++) {
 							System.out.println(userList.get(i));
 						}
 						break;
 					case 2: // add venues
-						VenuesDao venuedao = new VenuesDao();
+						VenuesDaoimpl venuedao = new VenuesDaoimpl();
 						System.out.println("Enter venue name");
 						String venueName = sc.nextLine();
 						System.out.println("Enter venue Address");
@@ -168,13 +168,13 @@ public class TestMain {
 						venuedao.insertVenue(venue);
 						break;
 					case 3: // delete venues
-						VenuesDao venueDao = new VenuesDao();
+						VenuesDaoimpl venueDao = new VenuesDaoimpl();
 						System.out.println("Enter venue name to delete");
 						venueName = sc.nextLine();
 						venueDao.removeVenue(venueName);
 						break;
 					case 4: // edit venues
-						venueDao = new VenuesDao();
+						venueDao = new VenuesDaoimpl();
 						System.out.println("Enter user name to edit");
 						venueName = sc.nextLine();
 						System.out.println("Enter venue vendor name");
@@ -186,7 +186,7 @@ public class TestMain {
 						venueDao.updateVenue(venueVendorName, contactNumber, venuePackage, venueName);
 						break;
 					case 5: // add service
-						ServicesDao serviceDao = new ServicesDao();
+						ServicesDaoimpl serviceDao = new ServicesDaoimpl();
 						System.out.println("Enter Service name");
 						String serviceName = sc.nextLine();
 						System.out.println("Enter Service package");
@@ -195,7 +195,7 @@ public class TestMain {
 						serviceDao.insertService(service);
 						break;
 					case 6:
-						serviceDao = new ServicesDao();
+						serviceDao = new ServicesDaoimpl();
 						System.out.println("Enter service name to delete");
 						serviceName = sc.nextLine();
 						serviceDao.removeServices(serviceName);
@@ -207,21 +207,21 @@ public class TestMain {
 					int userChoice = Integer.parseInt(sc.nextLine());
 					switch (userChoice) {
 					case 1: // view venue
-						VenuesDao venuedao = new VenuesDao();
+						VenuesDaoimpl venuedao = new VenuesDaoimpl();
 						List<Venues> venuelist = venuedao.showVenue();
 						for (int i = 0; i < venuelist.size(); i++) {
 							System.out.println(venuelist.get(i));
 						}
 						break;
 					case 2: // view services
-						ServicesDao serviceDao = new ServicesDao();
+						ServicesDaoimpl serviceDao = new ServicesDaoimpl();
 						List<Services> serviceList = serviceDao.showServices();
 					for (int i = 0; i < serviceList.size(); i++) {
 							System.out.println(serviceList.get(i));
 						}
 						break;
 					case 3:// edit profile
-						userDao = new UserDao();
+						userDao = new UserDaoimpl();
 						do {
 							System.out.println("Enter email id to edit your profile");
 							emailId = sc.nextLine();
@@ -286,7 +286,7 @@ public class TestMain {
 							System.out.println("invalid email");
 						break;
 					case 4:
-	      				 venuedao = new VenuesDao();
+	      				 venuedao = new VenuesDaoimpl();
 	      				 System.out.println("Enter city name");
 	      				 String venueCity=sc.nextLine();
 						 venuelist = venuedao.findCity(venueCity);
@@ -300,20 +300,20 @@ public class TestMain {
 						int budgetChoice=Integer.parseInt(sc.nextLine());
 						switch(budgetChoice) {
 						case 1:
-							venuedao=new VenuesDao();
+							venuedao=new VenuesDaoimpl();
 							venuelist=venuedao.findByBudget();
 							for (int i = 0; i < venuelist.size(); i++) {
 								System.out.println(venuelist.get(i));
 							}break;
 						case 2:
-							venuedao=new VenuesDao();
+							venuedao=new VenuesDaoimpl();
 							venuelist=venuedao.findLuxury();
 							for (int i = 0; i < venuelist.size(); i++) {
 								System.out.println(venuelist.get(i));
 							}break;
 						}break;
 					case 6:
-						venuedao = new VenuesDao();
+						venuedao = new VenuesDaoimpl();
 						emailId = valideUser.getEmailId();
 						int id1 = userDao.findUserId(emailId);
 						System.out.println("view Produce List");
@@ -370,7 +370,7 @@ public class TestMain {
 									if(upd > 0) {
 										BookingVenues bookVenue = new BookingVenues(id1, id2, venueName, noOfGuest, functionTiming,
 												eventDate, price);
-										BookingVenuesDao bookingVenue = new BookingVenuesDao();
+										BookingVenuesDaoimpl bookingVenue = new BookingVenuesDaoimpl();
 										bookingVenue.bookVenue(bookVenue);
 									System.out.println("order placed successfully!!!");
 									}else {
@@ -425,7 +425,7 @@ public class TestMain {
  		      				case 1:
  		      					System.out.println("Do you want book photography");
  		      					bookingChoice = sc.nextLine().charAt(0);
- 		      					ServicesDao servicedao = new ServicesDao();
+ 		      					ServicesDaoimpl servicedao = new ServicesDaoimpl();
  		      					if (bookingChoice == 'Y' || bookingChoice == 'y') {
  		      						emailId = valideUser.getEmailId();
  									int userId = userDao.findUserId(emailId);
@@ -440,7 +440,7 @@ public class TestMain {
  									System.out.println("package" + servicePackage);
  									BookingServices bookService = new BookingServices(userId, serviceId, serviceName, date,
  											servicePackage);
- 									BookingServicesDao bookingService = new BookingServicesDao();
+ 									BookingServicesDaoimpl bookingService = new BookingServicesDaoimpl();
  									bookingService.bookService(bookService);
  									emailId = valideUser.getEmailId();
 			      					userId = userDao.findUserId(emailId);
@@ -473,7 +473,7 @@ public class TestMain {
 												if(upd > 0) {
 													 bookService = new BookingServices(userId, serviceId, serviceName, date,
 															servicePackage);
-													BookingServicesDao bookservice = new BookingServicesDao();
+													BookingServicesDaoimpl bookservice = new BookingServicesDaoimpl();
 													bookservice.bookService(bookService);
 												System.out.println("order placed successfully!!!");
 												}else {
@@ -493,7 +493,7 @@ public class TestMain {
  		      			  case 2:
  		      				  System.out.println("Do you want book Mehandi");
  		      				bookingChoice = sc.nextLine().charAt(0);
-		      				  servicedao = new ServicesDao();
+		      				  servicedao = new ServicesDaoimpl();
 		      					if (bookingChoice == 'Y' || bookingChoice == 'y') {
 		      						emailId = valideUser.getEmailId();
 									int userId = userDao.findUserId(emailId);
@@ -508,7 +508,7 @@ public class TestMain {
 									System.out.println("package" + servicePackage);
 									BookingServices bookService = new BookingServices(userId, serviceId, serviceName, date,
 											servicePackage);
-									BookingServicesDao bookingService = new BookingServicesDao();
+									BookingServicesDaoimpl bookingService = new BookingServicesDaoimpl();
 									bookingService.bookService(bookService);
 									emailId = valideUser.getEmailId();
 			      					userId = userDao.findUserId(emailId);
@@ -541,7 +541,7 @@ public class TestMain {
 												if(upd > 0) {
 													 bookService = new BookingServices(userId, serviceId, serviceName, date,
 															servicePackage);
-													BookingServicesDao bookservice = new BookingServicesDao();
+													BookingServicesDaoimpl bookservice = new BookingServicesDaoimpl();
 													bookservice.bookService(bookService);
 												System.out.println("order placed successfully!!!");
 												}else {
@@ -561,7 +561,7 @@ public class TestMain {
  		      			  case 3:
  		      				  System.out.println("Do yu want book Bridal Makeup");
  		      				bookingChoice = sc.nextLine().charAt(0);
-		      				  servicedao = new ServicesDao();
+		      				  servicedao = new ServicesDaoimpl();
 		      					if (bookingChoice == 'Y' || bookingChoice == 'y') {
 		      						emailId = valideUser.getEmailId();
 									int userId = userDao.findUserId(emailId);
@@ -576,7 +576,7 @@ public class TestMain {
 									System.out.println("package" + servicePackage);
 									BookingServices bookService = new BookingServices(userId, serviceId, serviceName, date,
 											servicePackage);
-									BookingServicesDao bookingService = new BookingServicesDao();
+									BookingServicesDaoimpl bookingService = new BookingServicesDaoimpl();
 									bookingService.bookService(bookService);
 			      					emailId = valideUser.getEmailId();
 			      					userId = userDao.findUserId(emailId);
@@ -609,7 +609,7 @@ public class TestMain {
 												if(upd > 0) {
 													 bookService = new BookingServices(userId, serviceId, serviceName, date,
 															servicePackage);
-													BookingServicesDao bookservice = new BookingServicesDao();
+													BookingServicesDaoimpl bookservice = new BookingServicesDaoimpl();
 													bookservice.bookService(bookService);
 												System.out.println("order placed successfully!!!");
 												}else {
@@ -629,7 +629,7 @@ public class TestMain {
  		      			  case 4:
  		      				  System.out.println("Do you want book Decoration");
  		      				bookingChoice = sc.nextLine().charAt(0);
-		      				 servicedao = new ServicesDao();
+		      				 servicedao = new ServicesDaoimpl();
 		      					if (bookingChoice == 'Y' || bookingChoice == 'y') {
 		      						emailId = valideUser.getEmailId();
 									int userId = userDao.findUserId(emailId);
@@ -644,7 +644,7 @@ public class TestMain {
 									System.out.println("package" + servicePackage);
 									BookingServices bookService = new BookingServices(userId, serviceId, serviceName, date,
 											servicePackage);
-									BookingServicesDao bookingService = new BookingServicesDao();
+									BookingServicesDaoimpl bookingService = new BookingServicesDaoimpl();
 									bookingService.bookService(bookService);
 			      					emailId = valideUser.getEmailId();
 									 userId = userDao.findUserId(emailId);
@@ -677,7 +677,7 @@ public class TestMain {
 												if(upd > 0) {
 													 bookService = new BookingServices(userId, serviceId, serviceName, date,
 															servicePackage);
-													BookingServicesDao bookservice = new BookingServicesDao();
+													BookingServicesDaoimpl bookservice = new BookingServicesDaoimpl();
 													bookservice.bookService(bookService);
 												System.out.println("order placed successfully!!!");
 												}else {
@@ -697,7 +697,7 @@ public class TestMain {
  		      				}
  		      			}
  		      			case 8:
- 		      				RatingsDao ratings = new RatingsDao();
+ 		      				RatingsDaoimpl ratings = new RatingsDaoimpl();
  		      				emailId = valideUser.getEmailId();
 							int userId = userDao.findUserId(emailId);
  							System.out.println("Enter Service name");
@@ -708,7 +708,7 @@ public class TestMain {
  							ratings.insertRating(rate);
  							break;
  		      			case 9:
- 		      				ratings = new RatingsDao();
+ 		      				ratings = new RatingsDaoimpl();
  		      	             List<Ratings> ratingList=ratings.rating();
  							for (int i = 0; i < ratingList.size(); i++) {
  								System.out.println(ratingList.get(i));

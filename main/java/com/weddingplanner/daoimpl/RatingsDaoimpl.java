@@ -1,4 +1,4 @@
-package com.weddingplanner.dao;
+package com.weddingplanner.daoimpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,12 +8,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.weddingplannr.model.Ratings;
-import com.weddingplannr.model.Services;
-import com.weddingplannr.model.User;
-import com.weddingplannr.model.Venues;
+import com.weddingplanner.module.Ratings;
+import com.weddingplanner.module.Services;
+import com.weddingplanner.module.User;
+import com.weddingplanner.module.Venues;
+import com.weddingplanner.util.ConnectionUtil;
 
-public class RatingsDao {
+public class RatingsDaoimpl {
 	public void insertRating(Ratings rating) {
 		String insertQuery="insert into rating_details(user_id,service_name,rating)values(?,?,?)";
 	     ConnectionUtil conUtil=new ConnectionUtil();
