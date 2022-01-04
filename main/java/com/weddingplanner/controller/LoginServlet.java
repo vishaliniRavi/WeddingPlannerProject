@@ -48,21 +48,23 @@ public class LoginServlet extends HttpServlet {
 		UserDaoimpl userDetailDao=new  UserDaoimpl();
 		
 		User validAdmin=userDetailDao.validateAdmin(userId,password);
-		User validUser =userDetailDao.validateUser(userId,password);
-		
+		User validUser=userDetailDao.validateUser(userId, password);
+
 //		 RequestDispatcher rd=request.getRequestDispatcher("register.jsp");
 //		   rd.forward(request, response);
-		if (validUser != null)
+		if (validAdmin !=null)
 		   {
 			//user_id=validUser.getUser_id();
-			response.sendRedirect("index.jsp");
-		out.println("welcome");
-			 
+			RequestDispatcher rq=request.getRequestDispatcher("admin.jsp");
+			 rq.forward(request, response);
+//			response.sendRedirect("index.jsp");
+//		out.println("welcome");
+//			 
 		   }
-		 else if(validAdmin !=null) 
+		 else if(validUser != null) 
 		 {
 			 //out.println("WELCOME\t" + validAdmin.getUserName() + " as Admin!" );
-			 RequestDispatcher rq=request.getRequestDispatcher("admin.jsp");
+			 RequestDispatcher rq=request.getRequestDispatcher("index.jsp");
 			 rq.forward(request, response);
          }
 		

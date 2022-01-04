@@ -11,6 +11,7 @@ import java.util.List;
 import com.weddingplanner.dao.ServicesDao;
 import com.weddingplanner.module.Services;
 import com.weddingplanner.module.User;
+import com.weddingplanner.module.Venues;
 import com.weddingplanner.util.ConnectionUtil;
 
 public class ServicesDaoimpl implements ServicesDao {
@@ -22,7 +23,7 @@ public class ServicesDaoimpl implements ServicesDao {
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(viewQuery);
 			while(rs.next()) {
-			Services service=new Services(rs.getString(2),rs.getDouble(3));
+			Services service=new Services(rs.getString(2),rs.getDouble(3),rs.getString(5));
 			serviceList.add(service);
 			}
 		} catch (SQLException e) {
@@ -182,5 +183,27 @@ public class ServicesDaoimpl implements ServicesDao {
 			}
 		 return ratings;
 		} 
+	 public Services allService(String ServiceName) throws SQLException{
+		 //List<Venues> venuelist=new ArrayList<Venues>();
+		
+		 String validateQuery="select * from service_details WHERE  service_name='"+ServiceName+"'";
+		 System.out.println(validateQuery);
+		 Connection con=ConnectionUtil.getDbConnection();
+		 Services service=null;
+		
+			Statement stmt=con.createStatement();
+			ResultSet rs=stmt.executeQuery(validateQuery);
+			System.out.println("resultset");
+			while(rs.next()) {
+				 service=new Services(rs.getString(2),rs.getDouble(3),rs.getString(5));			
+				
+			}
+			
+		
+		
+		 return service;
+	 
+	 }
+	 
 	 
 }

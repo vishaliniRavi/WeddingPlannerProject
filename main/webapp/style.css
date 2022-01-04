@@ -109,9 +109,11 @@ p{
          color:black;
          text-align: center;
 }
-
+.venue{
+	display:inline-flex;
+}
 .venue .for-inline{
-    display:inline-flex;
+    
     margin:1rem;
     position:relative;
     overflow: hidden;
@@ -123,6 +125,7 @@ p{
     cursor:pointer;
 }
 .image-container img{
+	
     height:200px;
     width:350px;
     object-fit:cover;

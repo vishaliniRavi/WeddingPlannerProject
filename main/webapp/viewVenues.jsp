@@ -17,27 +17,30 @@
 <%!
 VenuesDaoimpl venueDaoImpl = new VenuesDaoimpl();
 List<Venues> showVenue;%>
-<%showVenue=venueDaoImpl.showVenue(); 
+<%showVenue=venueDaoImpl.showVenue();        
 %>
+<% for(Venues venue: showVenue){
+   //System.out.println(venue.getVenueImages());
+                	%>  
+
+          
 <div class="venue">
- <%int count=0;
-                for(Venues venue: showVenue){
-                	System.out.println(venue.getVenueImages());
-                	%>
-        <div class="for-inline">
+      <div class="for-inline">
         <div class="image-container">
-            <img src="<%=venue.getVenueImages()%>" alt="hall">
+             <a href="venue1.jsp?venueName=<%=venue.getVenueName()%>">
+               <img src="<%=venue.getVenueImages()%>" alt="hall"></a>
             <div class="title">
-                <h2>venue name: <%=venue.getVenueName() %></h2>
+                <h2> venue name: <%=venue.getVenueName() %></h2>
                 
-                <pre><i class="fas fa-map-marker-alt"></i> <%=venue.getVenueArea() %>   <i class="fas fa-hotel"></i> <%=venue.getVenueType() %></pre>
-            </div>
-        </div>
-        </div>
-        </div>
+           </div>
+              <pre><i class="fas fa-map-marker-alt"></i> <%=venue.getVenueCity() %>   <i class="fas fa-hotel"></i> <%=venue.getVenueType() %></pre>
         
-           <% count ++;
-            if(count==3){ %> 
-             <%count=0; }}%>  
+           </div>
+       </div>
+      </div>
+     
+
+        
+             <%}%>  
 </body>
 </html>

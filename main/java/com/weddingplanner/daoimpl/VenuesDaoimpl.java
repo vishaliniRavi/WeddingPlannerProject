@@ -111,6 +111,29 @@ public class VenuesDaoimpl implements VenuesDao {
 	 return venueId;
 	 
  }
+ public Venues allVenue(String venueName) throws SQLException{
+	 //List<Venues> venuelist=new ArrayList<Venues>();
+	
+	 String validateQuery="select * from venue_details WHERE  venue_name='"+venueName+"'";
+	 System.out.println(validateQuery);
+	 Connection con=ConnectionUtil.getDbConnection();
+	 Venues venue=null;
+	
+		Statement stmt=con.createStatement();
+		ResultSet rs=stmt.executeQuery(validateQuery);
+		System.out.println("resultset");
+		while(rs.next()) {
+		 venue=new Venues(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getDouble(8),rs.getString(9),rs.getString(10));
+			System.out.println(venue);
+			
+		}
+		
+	
+	
+	 return venue;
+ 
+ }
+ 
  
  public  int findPackage(int venueId)
 	{

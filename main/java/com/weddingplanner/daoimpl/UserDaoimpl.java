@@ -46,11 +46,9 @@ public class UserDaoimpl implements UserDao{
 			ResultSet rs=stmt.executeQuery(validateQuery);
 			if(rs.next())
 			{
-				user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,password,rs.getInt(6));
+				user=new User(rs.getString(3),rs.getLong(4),rs.getString(5),email_id,password,rs.getInt(8));
 			}
-			else {
-				System.out.println("Not a valid user");
-			}
+			 
    	 }catch (SQLException e) 
    	 {
 			// TODO Auto-generated catch block

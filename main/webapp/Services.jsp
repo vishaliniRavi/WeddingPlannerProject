@@ -8,6 +8,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Services</title>
+<style>                                           
+form{
+            text-align: center;
+            margin-top:25px;
+        }
+</style>
 </head>
 <body>
 <form action="insertServices" method="post">

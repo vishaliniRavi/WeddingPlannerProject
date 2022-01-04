@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.weddingplanner.dao.UserDao;
 import com.weddingplanner.daoimpl.VenuesDaoimpl;
@@ -38,6 +39,8 @@ public class VenueServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 	VenuesDaoimpl venueDao=new VenuesDaoimpl();
 		String venueName=request.getParameter("venueName");
 		String venueArea=request.getParameter("venueArea");
@@ -51,6 +54,8 @@ public class VenueServlet extends HttpServlet {
 		Venues venue=new Venues(venueName,venueArea,venueCity,venueType,venueVendorName,contactNumber,venuePackage,availability,venueImages);
 	    venueDao.insertVenue(venue);
 	    response.sendRedirect("login.jsp");
+	    session.setAttribute("venuename", venueName);
+
 	
 	
 	}

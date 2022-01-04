@@ -9,20 +9,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+form{
+            text-align: center;
+            margin-top:25px;
+        }                                          
+       
+</style>
 </head>
 <body>
-<a href="venues.jsp">Add venues</a>
- <a href="Services.jsp">Add services</a>
+
 <form action="insert" method="post">
 <h1>venue details</h1>
-venue name:<input type="text" name="venueName"><br>
-venue area:<input type="text" name="venueArea"><br>
-venue city:<input type="text" name="city"><br>
-venue type:<input type="text" name="venueType"><br>
-venue vendor name:<input type="text" name="vendorName"><br>
-contact number:<input type="number" name="contactNumber"><br>
-venue Package:<input type="number" name="venuePackage"><br>
-availability:<input type="text" name="availability"><br>
+venue name:<input type="text" name="venueName"><br><br>
+venue area:<input type="text" name="venueArea"><br><br>
+venue city:<input type="text" name="city"><br><br>
+venue type:<input type="text" name="venueType"><br><br>
+venue vendor name:<input type="text" name="vendorName"><br><br>
+contact number:<input type="number" name="contactNumber"><br><br>
+venue Package:<input type="number" name="venuePackage"><br><br>
+availability:<input type="text" name="availability"><br><br>
 <input type="submit" value=submit>
 </form>
 </body>

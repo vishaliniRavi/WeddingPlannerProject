@@ -23,8 +23,8 @@
 </head>
 <body>
     <nav>
-        <a href="">Venues</a>
-        <a href="">Services</a>
+        <a href="viewVenues.jsp">Venues</a>
+        <a href="viewService.jsp">Services</a>
         <a href="">About us</a>
         <a href="">Contact us</a>
         <a href="login.jsp">Login</a>
